@@ -58,10 +58,10 @@ importers:
         specifier: ^8.0.1
         version: 8.57.1
       eslint-config-prettier:
-        specifier: ^8.3.0
+        specifier: ^8.10.0
         version: 8.10.0(eslint@8.57.1)
       eslint-plugin-prettier:
-        specifier: ^4.0.0
+        specifier: ^4.2.1
         version: 4.2.1(eslint-config-prettier@8.10.0(eslint@8.57.1))(eslint@8.57.1)(prettier@2.8.8)
       jest:
         specifier: 29.3.1
