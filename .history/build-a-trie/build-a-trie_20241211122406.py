@@ -1,0 +1,2 @@
+def buildATrie():
+    None
