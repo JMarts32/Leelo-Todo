@@ -36,3 +36,6 @@ lerna-debug.log*
 
 # Hsitory
 .history
+
+#env
+.env
