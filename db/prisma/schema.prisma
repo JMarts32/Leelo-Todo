@@ -35,7 +35,7 @@ model Book {
   stock Int
   authors BookAuthor[]
   categories BookCategory[]
-  sales saleBook[]
+  sales SaleBook[]
 }
 
 model BookCategory {
@@ -52,7 +52,7 @@ model Category {
   books BookCategory[]
 }
 
-model saleBook {
+model SaleBook {
   id Int @id @default(autoincrement())
   sale Sale @relation(fields: [saleId], references: [id])
   saleId String
@@ -66,5 +66,5 @@ model Sale {
   id String @id @default(uuid())
   dateOfSale DateTime
   totalPrice Float
-  books saleBook[]
+  books SaleBook[]
 }
