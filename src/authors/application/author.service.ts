@@ -7,10 +7,11 @@ import { Book } from 'src/books/domain/schemas/book';
 export class AuthorService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async createAuthor(input: Author): Promise<void> {
-    await this.prisma.author.create({
+  async createAuthor(input: Author): Promise<string> {
+    const author = await this.prisma.author.create({
       data: { name: input.name },
     });
+    return author.id;
   }
 
   async getAuthorById(authorId: string): Promise<Author> {
@@ -29,14 +30,10 @@ export class AuthorService {
     });
   }
 
-  async findBooksByAuthor(authorName: string): Promise<Book[]> {
+  async findBooksByAuthor(authorId: string): Promise<Book[]> {
     const books = await this.prisma.book.findMany({
       where: {
-        authors: {
-          some: {
-            author: { name: { contains: authorName, mode: 'insensitive' } },
-          },
-        },
+        authors: { some: { author: { id: authorId } } },
       },
     });
     return books;

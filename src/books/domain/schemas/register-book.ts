@@ -1,7 +1,6 @@
 import { z } from 'zod';
 
 export const RegisterBook = z.object({
-  id: z.string(),
   name: z.string().nonempty(),
   basePrice: z.number().positive(),
   stock: z.number().positive().int(),

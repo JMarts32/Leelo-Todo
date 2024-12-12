@@ -12,7 +12,7 @@ export class BookService {
     private readonly categoryService: CategoryService,
   ) {}
 
-  async registerBook(input: RegisterBook): Promise<void> {
+  async registerBook(input: RegisterBook): Promise<Book> {
     try {
       // Verify that authors exist
       await Promise.all(
@@ -28,7 +28,7 @@ export class BookService {
       );
 
       // Create the book and connect authors and categories
-      await this.prisma.book.create({
+      return this.prisma.book.create({
         data: {
           name: input.name,
           basePrice: input.basePrice,
