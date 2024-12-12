@@ -34,7 +34,7 @@ export class AuthorService {
       where: {
         authors: {
           some: {
-            author: { name: { contains: authorName, mode: 'insensitive' } },
+            author: { name: { contains: authorName.toLowerCase() } },
           },
         },
       },

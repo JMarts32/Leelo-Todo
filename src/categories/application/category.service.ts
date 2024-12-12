@@ -33,7 +33,7 @@ export class CategoryService {
       where: {
         categories: {
           some: {
-            category: { name: { contains: categoryName, mode: 'insensitive' } },
+            category: { name: { contains: categoryName.toLowerCase() } },
           },
         },
       },
