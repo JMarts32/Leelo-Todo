@@ -1,0 +1,15 @@
+meta {
+  name: Create Author
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/author
+  body: json
+  auth: none
+}
+
+body:json {
+  { "name": "J.K. Rowling" }
+}

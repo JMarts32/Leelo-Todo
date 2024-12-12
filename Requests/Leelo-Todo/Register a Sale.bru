@@ -1,0 +1,22 @@
+meta {
+  name: Register a Sale
+  type: http
+  seq: 8
+}
+
+post {
+  url: http://localhost:3000/sale
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "books": [
+      {
+        "bookId": "eaced277-01f8-454a-827a-7f1d0013f6c2",
+        "quantity": 2
+      }
+    ]
+  }
+}
