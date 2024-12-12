@@ -2,7 +2,7 @@
 The base diagram was updated to accomodate addicional functionalities. Below the key differences
 
 ## Original Diagram
-![Original Diagram](./models/old-relational-diagram.jpg)
+![Original Diagram](./diagrams/old-relational-diagram.jpg)
 1. **Entities**:
    - **Books**: Represents the details of books, including `id`, `name`, and `basePrice`.
    - **Categories**: Represents book categories with attributes `id` and `name`.
@@ -18,7 +18,7 @@ The base diagram was updated to accomodate addicional functionalities. Below the
 ---
 
 ## Updated Diagram
-![Updated Diagram](./models/relational-diagram.jpg)
+![Updated Diagram](./diagrams/relational-diagram.jpg)
 1. **New Entities**:
    - **Sale**: Represents a sale with attributes `id`, `dateOfSale`, and `TotalPrice`.
    - **SaleBook**: Represents a many-to-many relationship between `Sale` and `Books`, allowing tracking of quantities and total price per book in a sale.

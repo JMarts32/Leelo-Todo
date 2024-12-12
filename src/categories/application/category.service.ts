@@ -6,10 +6,11 @@ import { Category, CategoryComplete } from '../domain/schemas';
 export class CategoryService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async createCategory(input: Category): Promise<void> {
-    await this.prisma.category.create({
+  async createCategory(input: Category): Promise<string> {
+    const category = await this.prisma.category.create({
       data: { name: input.name },
     });
+    return category.id;
   }
 
   async getCategoryById(categoryId: string): Promise<Category> {
@@ -28,14 +29,10 @@ export class CategoryService {
     });
   }
 
-  async findBooksByCategory(categoryName: string): Promise<Category[]> {
+  async findBooksByCategory(categoryId: string): Promise<Category[]> {
     const books = await this.prisma.book.findMany({
       where: {
-        categories: {
-          some: {
-            category: { name: { contains: categoryName.toLowerCase() } },
-          },
-        },
+        categories: { some: { category: { id: categoryId } } },
       },
     });
     return books;
