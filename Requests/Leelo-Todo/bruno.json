@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Leelo-Todo",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

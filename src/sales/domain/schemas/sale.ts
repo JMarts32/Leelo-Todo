@@ -1,7 +1,6 @@
 import { z } from 'zod';
 
 export const Sale = z.object({
-  dateOfSale: z.date(),
   books: z.array(
     z.object({
       bookId: z.string(),

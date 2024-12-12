@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/application/prisma.service';
 import { Sale } from '../domain/schemas';
 
@@ -14,7 +14,9 @@ export class SaleService {
           where: { id: saleBook.bookId },
         });
         if (!book || book.stock < saleBook.quantity) {
-          throw new Error(`Insufficient stock for book ID ${saleBook.bookId}`);
+          throw new BadRequestException(
+            `Insufficient stock for book ID ${saleBook.bookId} maximum is ${book.stock}`,
+          );
         }
 
         // Update the stock amount
@@ -38,7 +40,7 @@ export class SaleService {
 
     await this.prisma.sale.create({
       data: {
-        dateOfSale: input.dateOfSale,
+        dateOfSale: new Date(),
         totalPrice,
         books: { create: saleBooks },
       },
